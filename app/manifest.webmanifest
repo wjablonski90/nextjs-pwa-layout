@@ -1,10 +1,11 @@
 {
-  "name": "Moja App",
-  "short_name": "App",
+  "name": "PWA Layout App",
+  "short_name": "PWAApp",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/icons/icon-192.png",
