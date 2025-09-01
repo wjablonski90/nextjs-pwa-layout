@@ -16,7 +16,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl">
+      <head>
+        <link rel="apple-touch-icon" href="/icons/apple-icon-180.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Moja Aplikacja" />
+      </head>
       <body>
+        <ServiceWorkerReg />
         <VisualViewportContainer>
           <header className={styles.header}>
             <div className={`${styles.headerInner} flex items-center justify-center`}>
@@ -37,5 +45,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </VisualViewportContainer>
       </body>
     </html>
-    );
+  );
 }
