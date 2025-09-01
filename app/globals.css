@@ -5,7 +5,11 @@
 
 :root {
   --app-height: 100vh;
+  --header-h: 56px;
+  --footer-h: 46px;
 }
+
+
 
 html, body {
   height: 100%;

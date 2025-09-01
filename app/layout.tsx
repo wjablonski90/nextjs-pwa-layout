@@ -1,7 +1,8 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import './globals.css'
-import { FixedLayout } from './FixedLayout'
+import VisualViewportContainer from "./VisualViewportContainer";
+import styles from "./AppShell.module.css";
 import ServiceWorkerReg from "./ServiceWorkerReg";
 
 export const metadata: Metadata = {
@@ -14,24 +15,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body>
-        <ServiceWorkerReg />
-        <FixedLayout>
-          <header className="shrink-0 bg-blue-600 text-white px-4 py-6 text-center border-b border-blue-800 overflow-y-auto">
-            <h1 className="text-2xl font-bold">My App Header</h1>
+        <VisualViewportContainer>
+          <header className={styles.header}>
+            <div className={`${styles.headerInner} flex items-center justify-center`}>
+              <span className="font-semibold">Header</span>
+            </div>
           </header>
 
-          <main className="flex-1 overflow-y-auto overflow-x-hidden bg-gray-50 p-4">
+          <main id="main" className={`${styles.main} p-4 bg-gray-50`}>
             {children}
           </main>
 
-          <footer className="shrink-0 bg-gray-200 text-center text-sm px-4 py-4 border-t border-gray-400">
-            © 2025 My Footer
+          <footer className={styles.footer}>
+            <div className="flex items-center justify-around bottom-0 left-0 right-0 h-[56px] bg-white border-t border-gray-300 z-50 flex items-center justify-around transition-all duration-300">
+              <button className="text-blue-600">Home</button>
+              <button className="text-blue-600">Settings</button>
+            </div>
           </footer>
-        </FixedLayout>
-
+        </VisualViewportContainer>
       </body>
     </html>
-  )
+    );
 }

@@ -1,0 +1,61 @@
+/* wrapper jest fixed do okna i ma wysokość = visual viewport */
+.viewportLock {
+  position: fixed;
+  inset: 0;
+  height: var(--vvh, 100dvh);   /* fallback na 100dvh */
+  width: 100vw;
+  /* wyrównaj z widocznym viewportem gdy iOS przesuwa page przy klawiaturze */
+  transform: translate3d(var(--vv-left, 0px), var(--vv-top, 0px), 0);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;              /* blokada scrolla body/window */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: #ffffff;
+}
+
+/* Header i footer są "fixed" w sensie layoutu – niewyjeżdżają,
+   bo są w fixed-containerze o wysokości visual viewport. */
+.header {
+  flex: 0 0 auto;
+  height: var(--header-h);
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+.headerInner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.main {
+  flex: 1 1 auto;
+  overflow: auto;                 /* jedyny scroll w aplikacji */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 8px 12px;
+}
+
+.footer {
+  flex: 0 0 auto;
+  height: var(--footer-h);
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+.footerInner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px calc(0px + env(safe-area-inset-bottom)); /* nad klawiaturą */
+}
+.cta {
+  height: 40px;
+  min-width: 120px;
+  border: none;
+  border-radius: 12px;
+  background: #0ea5e9;
+  color: #fff;
+  font-weight: 600;
+}
