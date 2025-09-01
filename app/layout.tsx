@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import './globals.css'
 import { FixedLayout } from './FixedLayout'
+import ServiceWorkerReg from "./ServiceWorkerReg";
 
 export const metadata: Metadata = {
   title: "Next.js PWA Keyboard Layout",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <ServiceWorkerReg />
         <FixedLayout>
           <header className="shrink-0 bg-blue-600 text-white px-4 py-6 text-center border-b border-blue-800 overflow-y-auto">
             <h1 className="text-2xl font-bold">My App Header</h1>
@@ -28,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             © 2025 My Footer
           </footer>
         </FixedLayout>
+
       </body>
     </html>
   )
