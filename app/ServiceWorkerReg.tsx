@@ -11,7 +11,7 @@ export default function ServiceWorkerReg() {
     }
 
     navigator.serviceWorker
-      .register("/sw.js", { scope: "/" })
+      .register("/sw.js?v3", { scope: "/" })
       .then((reg) => {
         console.log("[sw] registered:", reg.scope);
 

@@ -1,13 +1,12 @@
-// src/app/layout.tsx
+import "./globals.css";
 import type { Metadata } from "next";
-import './globals.css'
-import VisualViewportContainer from "./VisualViewportContainer";
 import styles from "./AppShell.module.css";
+import VisualViewportContainer from "./VisualViewportContainer";
 import ServiceWorkerReg from "./ServiceWorkerReg";
 
 export const metadata: Metadata = {
-  title: "Next.js PWA Keyboard Layout",
-  description: "A Progressive Web App with a fixed header, scrollable main section, and fixed footer that adjusts for keyboard visibility.",
+  title: "Test App",
+  description: "Demo z headerem, main i footerem",
   other: {
     viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content",
   },
@@ -17,14 +16,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl">
       <head>
-        <link rel="apple-touch-icon" href="/icons/apple-icon-180.png" />
-        <link rel="manifest" href="/manifest.json" />
+        {/* <link rel="manifest" href="/manifest.json" /> */}
+        <meta name="theme-color" content="#ffffffff" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Moja Aplikacja" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="PWA2" />
+        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
       <body>
-        <ServiceWorkerReg />
         <VisualViewportContainer>
           <header className={styles.header}>
             <div className={`${styles.headerInner} flex items-center justify-center`}>
@@ -43,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </footer>
         </VisualViewportContainer>
+        <ServiceWorkerReg />
       </body>
     </html>
   );
